@@ -8,7 +8,7 @@
  */
 public class PasswordHacking {
 	
-	static String password = "!!!!!";   //"!!!!!" will take 66347101 attempts
+	public static String password;   //"!!!!!" will take 66347101 attempts
 	
 	final static int SIZE = 6;
 	static int attempt = 0;
@@ -23,12 +23,20 @@ public class PasswordHacking {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+        long startTime = System.currentTimeMillis();
+        if(args.length > 0)
+            password = args[0];
+        else
+            password = "!!!!!";
 		System.out.println("Extracting the password...");
 		
 	    searchPassword = getPassword();
 		
 	    System.out.println("Your password is: " + searchPassword);
 	    System.out.println("It took " + attempt + " attempts.");
+        long endTime   = System.currentTimeMillis();
+        long totalTime = endTime - startTime;
+        System.out.println("Runtime: " + (totalTime)/1000 + "s");
 	}
 
 	/***
